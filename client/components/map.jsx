@@ -34,10 +34,12 @@ class TerritoryMap extends React.Component{
       }
     }
 
+
     function createMarker(place) {
       let placeLoc = place.geometry.location;
       let marker = new google.maps.Marker({
         map: map,
+        icon: "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png",
         position: place.geometry.location
       });
 
