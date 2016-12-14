@@ -1,15 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Root from './components/root';
+import configureStore from './store/store';
 
-var Greeting = React.createClass({
-  render: function() {
-    return (
-      <p>Hello, Universe</p>
-    )
-  }
-});
-
-ReactDOM.render(
-  <Greeting/>,
-  document.getElementById('greeting-div')
-);
+document.addEventListener('DOMContentLoaded', () => {
+  let store = configureStore();
+  const root = document.getElementByID('content');
+  ReactDOM.render(<Root store={store} />, root);
+})
