@@ -16,7 +16,7 @@ class TerritoryMap extends React.Component{
 
      let request = {
        location: sf,
-       radius: '500',
+       radius: '2000',
        type: ['park']
      };
 
@@ -50,7 +50,8 @@ class TerritoryMap extends React.Component{
 
   render(){
     const mapHeight = {
-      height: '300px'
+      height: '500px',
+      width: '500px'
     };
 
     return (
