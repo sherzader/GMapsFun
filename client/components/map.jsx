@@ -1,6 +1,7 @@
 import React from 'react';
 
 class TerritoryMap extends React.Component{
+
   componentDidMount(){
     let map;
     let service;
@@ -10,43 +11,55 @@ class TerritoryMap extends React.Component{
     const mapOptions = {
       center: sf,
       zoom: 13
-    }
+    };
 
     map = new google.maps.Map(mapNode, mapOptions);
 
-     let request = {
-       location: sf,
-       radius: '2000',
-       type: ['park']
-     };
+    let input = document.getElementById('place-input');
+    let searchBox = new google.maps.places.SearchBox(input);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-     infoWindow = new google.maps.InfoWindow();
+    map.addListener('bounds_changed', () => {
+      searchBox.setBounds(map.getBounds());
+    });
 
-     service = new google.maps.places.PlacesService(map);
-     service.nearbySearch(request, callback);
+    let markers = [];
 
+    searchBox.addListener('places_changed', () => {
+      let places = searchBox.getPlaces();
 
-    function callback(results, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-          createMarker(results[i]);
-        }
+      if (places.length === 0) {
+        return;
       }
-    }
 
+      markers.forEach( marker => {
+        marker.setMap(null);
+      });
+      markers = [];
 
-    function createMarker(place) {
-      let placeLoc = place.geometry.location;
-      let marker = new google.maps.Marker({
-        map: map,
-        icon: "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png",
-        position: place.geometry.location
+      let bounds = new google.maps.LatLngBounds();
+      places.forEach( place => {
+        if (!place.geometry){
+          console.log('returned place has no geometry');
+          return;
+        }
+
+        markers.push(new google.maps.Marker({
+          map: map,
+          title: place.name,
+          icon: "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png",
+          position: place.geometry.location
+        }));
+
+        if (place.geometry.viewport) {
+           bounds.union(place.geometry.viewport);
+         } else {
+           bounds.extend(place.geometry.location);
+         }
       });
 
-      google.maps.event.addListener(marker, 'click', () => {
-        console.log(place.name);
-      });
-    }
+      map.fitBounds(bounds);
+    });
 
   }
 
@@ -58,7 +71,7 @@ class TerritoryMap extends React.Component{
 
     return (
       <div>
-        <input id='place-input' type='text' placeholder='Search Box'>
+        <input id='place-input' type='text' placeholder='Search Box' />
         <div id='map-container' ref='map' style={mapHeight}></div>
       </div>
     )
