@@ -1,21 +1,21 @@
 import React from 'react';
 
-const TodoList = ({ territories }) => {
-    
-
+class TodoList extends React.Component{
+  render(){
     return(
       <div>
         <h3>Territories to mark</h3>
         <ul>
-          {territories.map((territory) => {
+          {this.props.territories.map((territory) => {
             return <li key={territory.id}>{territory.name}
-              <img className="paw-print" src="https://www.thesage.com/images/PawPrint.png" />
-              </li>
+              <img className="paw-print-unmarked" src="https://www.thesage.com/images/PawPrint.png" />
+            </li>
             })
           }
         </ul>
       </div>
     );
+  }
 };
 
 export default TodoList;
