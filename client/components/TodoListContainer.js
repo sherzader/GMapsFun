@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
 import TodoList from './TodoList';
-import { requestShelters } from '../actions/shelters_actions';
-import { updateBounds } from '../actions/filter_actions';
 
 const mapStatetoProps = state => ({
   territories: state.territories
