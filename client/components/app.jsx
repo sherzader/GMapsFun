@@ -1,13 +1,11 @@
 import React from 'react';
-import TerritoryMap from './map';
-import TodoListContainer from './TodoListContainer';
+import SearchContainer from './SearchContainer';
 
 const App = () => (
   <div>
     <h1>Marked</h1>
     <p>For dogs to keep track of their territory</p>
-    <TodoListContainer />
-    <TerritoryMap />
+    <SearchContainer />
   </div>
 );
 

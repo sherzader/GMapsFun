@@ -44,12 +44,18 @@ class TerritoryMap extends React.Component{
           return;
         }
 
-        markers.push(new google.maps.Marker({
+        let marker = new google.maps.Marker({
           map: map,
           title: place.name,
           icon: "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png",
           position: place.geometry.location
-        }));
+        });
+
+        markers.push(marker);
+
+        google.maps.event.addListener(marker, 'click', () => {
+          console.log(place);
+        });
 
         if (place.geometry.viewport) {
            bounds.union(place.geometry.viewport);

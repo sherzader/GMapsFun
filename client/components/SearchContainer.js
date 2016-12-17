@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import TodoList from './TodoList';
+import Search from './Search';
 
 const mapStatetoProps = state => ({
   territories: state.territories
@@ -14,4 +14,4 @@ const mapDispatchtoProps = dispatch => ({
 export default connect(
   mapStatetoProps,
   mapDispatchtoProps
-)(TodoList);
+)(Search);
