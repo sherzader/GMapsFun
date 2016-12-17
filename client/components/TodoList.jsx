@@ -1,14 +1,13 @@
 import React from 'react';
 
 const TodoList = ({ territories }) => {
-    const territoryNames = Object.keys(territories);
 
     return(
       <div>
         <h3>Territories to mark</h3>
         <ul>
-          {territoryNames.map((name, i) => {
-            return <li key={i}>{name}</li>
+          {territories.map((territory) => {
+            return <li key={territory.id}>{territory.name}</li>
             })
           }
         </ul>

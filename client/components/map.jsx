@@ -54,7 +54,8 @@ class TerritoryMap extends React.Component{
         markers.push(marker);
 
         google.maps.event.addListener(marker, 'click', () => {
-          console.log(place);
+          console.log(place.name);
+          this.props.addTerritory(place.name, place.id);
         });
 
         if (place.geometry.viewport) {

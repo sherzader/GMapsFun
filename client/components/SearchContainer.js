@@ -6,9 +6,9 @@ const mapStatetoProps = state => ({
 })
 
 const mapDispatchtoProps = dispatch => ({
-  addTerritory: dispatch => ({type: 'ADD_TERRITORY', territory}),
-  removeTerritory: dispatch => ({type: 'REMOVE_TERRITORY', territory}),
-  markTerritory: dispatch => ({type: 'MARK_TERRITORY', territory})
+  addTerritory: (name, id) => dispatch({type: 'ADD_TERRITORY', name, id}),
+  removeTerritory: name => dispatch({type: 'REMOVE_TERRITORY', name}),
+  markTerritory: name => dispatch({type: 'MARK_TERRITORY', name})
 })
 
 export default connect(
