@@ -7,7 +7,9 @@ const TodoList = ({ territories }) => {
         <h3>Territories to mark</h3>
         <ul>
           {territories.map((territory) => {
-            return <li key={territory.id}>{territory.name}</li>
+            return <li key={territory.id}>{territory.name}
+              <img class="paw-print" src="https://www.thesage.com/images/PawPrint.png">
+              </li>
             })
           }
         </ul>
