@@ -1,0 +1,16 @@
+.paw-print-unmarked {
+  opacity: 0.3;
+  height: 30px;
+  width: auto;
+  padding: 10px;
+}
+
+.paw-print-marked {
+  height: 30px;
+  width: auto;
+  padding: 10px;
+}
+
+li {
+  padding: 5px;
+}

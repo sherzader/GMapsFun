@@ -1,6 +1,7 @@
 import React from 'react';
 
 const TodoList = ({ territories }) => {
+    
 
     return(
       <div>
@@ -8,7 +9,7 @@ const TodoList = ({ territories }) => {
         <ul>
           {territories.map((territory) => {
             return <li key={territory.id}>{territory.name}
-              <img class="paw-print" src="https://www.thesage.com/images/PawPrint.png">
+              <img className="paw-print" src="https://www.thesage.com/images/PawPrint.png" />
               </li>
             })
           }
