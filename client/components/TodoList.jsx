@@ -1,6 +1,13 @@
 import React from 'react';
 
 class TodoList extends React.Component{
+  toggleMark(e){
+    console.log(e.target);
+    let target = e.target;
+    let currentClass = e.target.className;
+    target.className = (currentClass === 'paw-print-unmarked') ? 'paw-print-marked' : 'paw-print-unmarked';
+  }
+
   render(){
     return(
       <div>
@@ -8,7 +15,7 @@ class TodoList extends React.Component{
         <ul>
           {this.props.territories.map((territory) => {
             return <li key={territory.id}>{territory.name}
-              <img className="paw-print-unmarked" src="https://www.thesage.com/images/PawPrint.png" />
+              <img className="paw-print-unmarked" onClick={this.toggleMark} src="https://www.thesage.com/images/PawPrint.png" />
             </li>
             })
           }
