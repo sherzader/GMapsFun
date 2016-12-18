@@ -7,8 +7,8 @@ const mapStatetoProps = state => ({
 
 const mapDispatchtoProps = dispatch => ({
   addTerritory: (name, id) => dispatch({type: 'ADD_TERRITORY', name, id}),
-  removeTerritory: name => dispatch({type: 'REMOVE_TERRITORY', name}),
-  markTerritory: name => dispatch({type: 'MARK_TERRITORY', name})
+  removeTerritory: index => dispatch({type: 'REMOVE_TERRITORY', index}),
+  markTerritory: (name, mark, index) => dispatch({type: 'TOGGLE_MARK_TERRITORY', name, mark, index})
 })
 
 export default connect(
