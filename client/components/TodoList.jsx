@@ -3,14 +3,14 @@ import React from 'react';
 class TodoList extends React.Component{
   toggleMark(e){
     let target = e.target;
+    console.log(target);
     let currentClass = e.target.className;
     target.className = (currentClass === 'paw-print-unmarked') ? 'paw-print-marked' : 'paw-print-unmarked';
     let i = target.getAttribute('data-index');
     let name = target.getAttribute('data-name');
     let marked = target.getAttribute('data-mark');
-    console.log(i, name, marked);
-    this.props.markTerritory(name, marked, i);
-    console.log(i, name, marked);
+    console.log(i, name, target.className);
+    this.props.markTerritory(name, target.className, i);
   }
 
   removeTerritory(index){
