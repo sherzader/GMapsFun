@@ -15,10 +15,14 @@ class TodoList extends React.Component{
         <h3>Territories to mark</h3>
         <ul>
           {this.props.territories.map((territory, index) => {
-            let print = (territory.marked) ? 'paw-print-marked' : 'paw-print-unmarked';
+            let print = (territory.marked) ? 'paw-print-marked' :
+              'paw-print-unmarked';
             return <li key={index}>{territory.name}
-              <img className={print} onClick={this.toggleMark.bind(this, index, territory.marked)} src="https://www.thesage.com/images/PawPrint.png" />
-              <button onClick={this.removeTerritory.bind(this, index)}>X</button>
+              <img className={print}
+                onClick={this.toggleMark.bind(this, index, territory.marked)}
+                src="https://www.thesage.com/images/PawPrint.png" />
+              <button
+                onClick={this.removeTerritory.bind(this, index)}>X</button>
             </li>
             })
           }
