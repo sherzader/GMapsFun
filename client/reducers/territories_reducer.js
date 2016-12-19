@@ -3,7 +3,7 @@ const TerritoriesReducer = function (state = [ {name:'park1', marked: true}, {na
     case 'ADD_TERRITORY':
       return [ ...state, {name: action.name, marked: false} ];
       break;
-    case 'TOGGLE_MARK_TERRITORY':
+    case 'TOGGLE_MARK':
       return state.map((territory, i) => {
         if (action.index === i){
           return Object.assign({}, territory,
