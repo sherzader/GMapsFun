@@ -14,3 +14,8 @@ export const toggleMark = (index, mark) => ({
   index,
   mark
 });
+
+export const addAndMark = name => ({
+  type: 'ADD_AND_MARK',
+  name
+})
