@@ -4,10 +4,10 @@ import TodoList from './TodoList';
 
 const Search = ({territories, addTerritory, removeTerritory, markTerritory}) => (
       <div>
+        <TerritoryMap addTerritory={addTerritory} />
         <TodoList territories={territories}
           removeTerritory={removeTerritory}
           markTerritory={markTerritory}/>
-        <TerritoryMap addTerritory={addTerritory} />
       </div>
 );
 
