@@ -1,6 +1,7 @@
 import React from 'react';
 import TerritoryMap from './map';
 import TodoList from './TodoList';
+import DoneList from './DoneList';
 
 const Search = ({territories, addTerritory, removeTerritory, markTerritory}) => (
       <div>
@@ -8,6 +9,7 @@ const Search = ({territories, addTerritory, removeTerritory, markTerritory}) => 
         <TodoList territories={territories}
           removeTerritory={removeTerritory}
           markTerritory={markTerritory}/>
+        <DoneList territories={territories} />
       </div>
 );
 
