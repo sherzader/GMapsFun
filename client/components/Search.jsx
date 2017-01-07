@@ -9,9 +9,6 @@ const Search = ({territories, addTerritory, removeTerritory, toggleMark}) => (
         <TodoList territories={territories}
           removeTerritory={removeTerritory}
           toggleMark={toggleMark} />
-        <DoneList territories={territories}
-          removeTerritory={removeTerritory}
-          toggleMark={toggleMark} />
       </div>
 );
 
