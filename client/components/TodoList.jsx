@@ -3,16 +3,15 @@ import React from 'react';
 class TodoList extends React.Component{
   toggleMark(index, mark){
     this.props.toggleMark(index, mark);
-    // console.log(territory);
   }
 
   removeTerritory(index){
     this.props.removeTerritory(index);
-    // console.log(territory);
   }
 
   render(){
     //formatting to an array of arrays: [territory object, index]
+    let testing = ['rainbows', 'puppies', 'kittens'];
     let unmarked = [];
     let marked = [];
     this.props.territories.forEach((territory, i) => {
