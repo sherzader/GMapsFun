@@ -2,6 +2,14 @@ import React from 'react';
 import Map from 'google-maps-react';
 
 class MapContainer extends React.Component{
+  componentDidMount: function(){
+      this.renderSearchBox();
+  }
+
+  renderSearchBox: function(){
+    
+  }
+
   render(){
     if (!this.props.loaded){
       return <div>Loading...</div>
