@@ -1,5 +1,4 @@
 import React from 'react';
-// import Map from 'google-maps-react';
 import ReactDOM from 'react-dom';
 
 class MapContents extends React.Component{
@@ -71,8 +70,6 @@ class MapContents extends React.Component{
   }
 
   render(){
-    const {google} = this.props;
-
     if (!this.props.loaded){
       return <div>Loading...</div>
     }
