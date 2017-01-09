@@ -4,11 +4,11 @@ import Map from 'google-maps-react';
 
 class MapWrapper extends React.Component{
   componentDidMount(){
-    console.log('map wrapper', this.props);
+    // console.log('map wrapper', this.props);
   }
 
   componentDidUpdate(){
-    console.log('update', this.props)
+    // console.log('update', this.props)
   }
 
   render(){
