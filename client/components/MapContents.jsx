@@ -2,8 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class MapContents extends React.Component{
+
   componentDidMount(){
+    console.log(this.props);
+      const {map} = this.props;
       this.renderSearchBox();
+      map.addListener('bounds_changed', () => {
+        console.log('bounds changed');
+      })
   }
 
   componentDidUpdate(prevProps) {
@@ -16,6 +22,7 @@ class MapContents extends React.Component{
   renderSearchBox(){
     const {google, map} = this.props;
     let markers = [];
+    console.log(this.props);
 
     if (!google || !map) return;
 
@@ -24,6 +31,10 @@ class MapContents extends React.Component{
     let searchBox = new google.maps.places.SearchBox(input);
     searchBox.bindTo('bounds', map);
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+
+    // map.addListener('bounds_changed', () => {
+    //   searchBox.setBounds(map.getBounds());
+    // });
 
     searchBox.addListener('places_changed', () => {
       let places = searchBox.getPlaces();
