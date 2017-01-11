@@ -13,7 +13,8 @@ class MapWrapper extends React.Component{
       return;
     }
 
-    this.MarkerManager.updateMarkers(places);
+    let bounds = this.map.getBounds();
+    this.MarkerManager.updateMarkers(places, bounds);
   }
 
   renderSearchBox(mapProps, map){
@@ -38,8 +39,9 @@ class MapWrapper extends React.Component{
         return;
       }
 
+      let bounds = this.map.getBounds();
       this.MarkerManager = new MarkerManager(this.map);
-      this.MarkerManager.updateMarkers(places);
+      this.MarkerManager.updateMarkers(places, bounds);
 
         // if (place.geometry.viewport) {
         //    bounds.union(place.geometry.viewport);

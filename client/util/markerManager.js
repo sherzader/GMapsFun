@@ -1,7 +1,8 @@
 export default class MarkerManager {
-  constructor(map){
+  constructor(map, bounds){
     this.map = map;
     this.markers = [];
+    this.bounds = bounds;
     this._createMarker = this._createMarker.bind(this);
     this._removeMarker = this._removeMarker.bind(this);
   }
@@ -31,6 +32,12 @@ export default class MarkerManager {
       id: place.id
     });
     this.markers.push(marker);
+
+    if (place.geometry.viewport) {
+       this.bounds.union(place.geometry.viewport);
+     } else {
+       this.bounds.extend(place.geometry.location);
+     }
   }
 
   _removeMarker(marker){
