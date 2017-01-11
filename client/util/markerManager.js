@@ -8,10 +8,27 @@ export default class MarkerManager {
 
   updateMarkers(locations){
     this.locations = locations;
-
+    this._locationsToAdd().forEach(this._createMarkerFromLocation);
+    this._markersToRemove().forEach(this._removeMarker);
   }
 
   _locationsToAdd(){
-    const currentLocations = this.markers.map( marker => marker );
+    const currentMarkers = this.markers.map( marker => marker.id );
+    return this.locations.filter( location => !currentMarkers.includes(location.id));
+  }
+
+  _markersToRemove(){
+    const locationIds = this.locations.map( location => location.id );
+    return this.markers.filter( marker => !locationIds.includes(marker.id));
+  }
+
+  _createMarkerFromLocation(location){
+
+  }
+
+  _removeMarker(marker){
+    const i = this.markers.indexOf(marker);
+    this.markers[i].setMap(null);
+    this.markers.splice(i, 1);
   }
 }
