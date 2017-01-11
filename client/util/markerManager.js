@@ -8,7 +8,7 @@ export default class MarkerManager {
 
   updateMarkers(locations){
     this.locations = locations;
-    this._locationsToAdd().forEach(this._createMarkerFromLocation);
+    this._locationsToAdd().forEach(this._createMarker);
     this._markersToRemove().forEach(this._removeMarker);
   }
 
@@ -22,9 +22,9 @@ export default class MarkerManager {
     return this.markers.filter( marker => !locationIds.includes(marker.id));
   }
 
-  _createMarkerFromLocation(place){
+  _createMarker(place){
     let marker = new google.maps.Marker({
-      map: map,
+      map: this.map,
       title: place.name,
       icon: "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png",
       position: place.geometry.location,

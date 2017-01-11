@@ -31,41 +31,44 @@ class MapWrapper extends React.Component{
         return;
       }
 
-      markers.forEach( marker => {
-        marker.setMap(null);
-      });
-      markers = [];
 
-      let bounds = new google.maps.LatLngBounds();
-      places.forEach( place => {
-        if (!place.geometry){
-          console.log('returned place has no geometry');
-          return;
-        }
+      this.MarkerManager = new MarkerManager(this.map);
+      this.MarkerManager.updateMarkers(places);
+      // markers.forEach( marker => {
+      //   marker.setMap(null);
+      // });
+      // markers = [];
+      //
+      // let bounds = new google.maps.LatLngBounds();
+      // places.forEach( place => {
+      //   if (!place.geometry){
+      //     console.log('returned place has no geometry');
+      //     return;
+      //   }
+      //
+      //   let marker = new google.maps.Marker({
+      //     map: map,
+      //     title: place.name,
+      //     icon: "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png",
+      //     position: place.geometry.location,
+      //     id: place.id
+      //   });
+      //   console.log(marker.id);
+      //   markers.push(marker);
+      //
+      //   google.maps.event.addListener(marker, 'click', () => {
+      //     console.log(place.name);
+      //     this.props.addTerritory(place.name, place.id);
+      //   });
 
-        let marker = new google.maps.Marker({
-          map: map,
-          title: place.name,
-          icon: "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png",
-          position: place.geometry.location,
-          id: place.id
-        });
-        console.log(marker.id);
-        markers.push(marker);
-
-        google.maps.event.addListener(marker, 'click', () => {
-          console.log(place.name);
-          this.props.addTerritory(place.name, place.id);
-        });
-
-        if (place.geometry.viewport) {
-           bounds.union(place.geometry.viewport);
-         } else {
-           bounds.extend(place.geometry.location);
-         }
-      });
-
-      map.fitBounds(bounds);
+        // if (place.geometry.viewport) {
+        //    bounds.union(place.geometry.viewport);
+        //  } else {
+        //    bounds.extend(place.geometry.location);
+        //  }
+      // });
+      //
+      // map.fitBounds(bounds);
     });
   }
 
