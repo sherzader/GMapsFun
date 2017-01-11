@@ -24,13 +24,6 @@ class MapWrapper extends React.Component{
     searchBox.bindTo('bounds', map);
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
 
-    // map.addListener('bounds_changed', () => {
-    //   searchBox.setBounds(map.getBounds());
-    // });
-    // map.addListener('bounds_changed', () => {
-    //   console.log('testing bounds changed');
-    // })
-
     searchBox.addListener('places_changed', () => {
       let places = searchBox.getPlaces();
 

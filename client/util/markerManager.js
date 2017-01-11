@@ -22,8 +22,15 @@ export default class MarkerManager {
     return this.markers.filter( marker => !locationIds.includes(marker.id));
   }
 
-  _createMarkerFromLocation(location){
-
+  _createMarkerFromLocation(place){
+    let marker = new google.maps.Marker({
+      map: map,
+      title: place.name,
+      icon: "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png",
+      position: place.geometry.location,
+      id: place.id
+    });
+    this.markers.push(marker);
   }
 
   _removeMarker(marker){
