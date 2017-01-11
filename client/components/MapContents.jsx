@@ -61,6 +61,7 @@ class MapContents extends React.Component{
           icon: "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png",
           position: place.geometry.location
         });
+        console.log(marker);
 
         markers.push(marker);
 

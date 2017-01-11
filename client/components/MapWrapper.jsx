@@ -53,9 +53,10 @@ class MapWrapper extends React.Component{
           map: map,
           title: place.name,
           icon: "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png",
-          position: place.geometry.location
+          position: place.geometry.location,
+          id: place.id
         });
-
+        console.log(marker.id);
         markers.push(marker);
 
         google.maps.event.addListener(marker, 'click', () => {
