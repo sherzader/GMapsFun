@@ -4,10 +4,16 @@ import ReactDOM from 'react-dom';
 import Map from 'google-maps-react';
 
 class MapWrapper extends React.Component{
+  getBounds(){
+    console.log(this.map.getBounds());
+  }
+
   renderSearchBox(mapProps, map){
+    this.map = map;
     const {google} = this.props;
     let markers = [];
     console.log(this.props);
+    console.log(this.map);
 
     // if (!google || !map) return;
 
@@ -20,9 +26,9 @@ class MapWrapper extends React.Component{
     // map.addListener('bounds_changed', () => {
     //   searchBox.setBounds(map.getBounds());
     // });
-    searchBox.addListener('bounds_changed', () => {
-      console.log('')
-    })
+    // map.addListener('bounds_changed', () => {
+    //   console.log('testing bounds changed');
+    // })
 
     searchBox.addListener('places_changed', () => {
       let places = searchBox.getPlaces();
@@ -77,6 +83,8 @@ class MapWrapper extends React.Component{
       <Map google={google}
         containerStyle={{width: '100%', height: '100vh', position: 'relative'}}
         onReady={this.renderSearchBox.bind(this)}
+        onDragend={this.getBounds.bind(this)}
+        zoomChanged={this.getBounds.bind(this)}
         zoom={14}>
         <input id='place-input' className='controls' type='text' placeholder='Search Box' />
 
