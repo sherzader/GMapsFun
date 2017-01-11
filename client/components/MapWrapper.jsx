@@ -2,6 +2,7 @@ import React from 'react';
 import MapContents from './MapContents';
 import ReactDOM from 'react-dom';
 import Map from 'google-maps-react';
+import MarkerManager from '../util/markerManager';
 
 class MapWrapper extends React.Component{
   getBounds(){
