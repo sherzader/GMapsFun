@@ -5,23 +5,30 @@ import Map from 'google-maps-react';
 import MarkerManager from '../util/markerManager';
 
 class MapWrapper extends React.Component{
-  getBounds(){
-    console.log(this.map.getBounds());
+  getNewPlaces(){
+    let places = this.searchBox.getPlaces();
+    console.log(places);
+
+    if (places.length === 0) {
+      return;
+    }
+
+    this.MarkerManager.updateMarkers(places);
   }
 
   renderSearchBox(mapProps, map){
     this.map = map;
     const {google} = this.props;
     let markers = [];
-    console.log(this.props);
-    console.log(this.map);
+    console.log(mapProps);
 
     // if (!google || !map) return;
 
     const input = document.getElementById('place-input');;
     const node = ReactDOM.findDOMNode(input);
     let searchBox = new google.maps.places.SearchBox(input);
-    searchBox.bindTo('bounds', map);
+    searchBox.bindTo('bounds', this.map);
+    this.searchBox = searchBox;
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
 
     searchBox.addListener('places_changed', () => {
@@ -31,35 +38,8 @@ class MapWrapper extends React.Component{
         return;
       }
 
-
       this.MarkerManager = new MarkerManager(this.map);
       this.MarkerManager.updateMarkers(places);
-      // markers.forEach( marker => {
-      //   marker.setMap(null);
-      // });
-      // markers = [];
-      //
-      // let bounds = new google.maps.LatLngBounds();
-      // places.forEach( place => {
-      //   if (!place.geometry){
-      //     console.log('returned place has no geometry');
-      //     return;
-      //   }
-      //
-      //   let marker = new google.maps.Marker({
-      //     map: map,
-      //     title: place.name,
-      //     icon: "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png",
-      //     position: place.geometry.location,
-      //     id: place.id
-      //   });
-      //   console.log(marker.id);
-      //   markers.push(marker);
-      //
-      //   google.maps.event.addListener(marker, 'click', () => {
-      //     console.log(place.name);
-      //     this.props.addTerritory(place.name, place.id);
-      //   });
 
         // if (place.geometry.viewport) {
         //    bounds.union(place.geometry.viewport);
@@ -81,8 +61,7 @@ class MapWrapper extends React.Component{
       <Map google={google}
         containerStyle={{width: '100%', height: '100vh', position: 'relative'}}
         onReady={this.renderSearchBox.bind(this)}
-        onDragend={this.getBounds.bind(this)}
-        zoomChanged={this.getBounds.bind(this)}
+        onDragend={this.getNewPlaces.bind(this)}
         zoom={14}>
         <input id='place-input' className='controls' type='text' placeholder='Search Box' />
 
