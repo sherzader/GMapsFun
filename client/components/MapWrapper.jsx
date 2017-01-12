@@ -13,12 +13,13 @@ class MapWrapper extends React.Component{
       return;
     }
 
-    let bounds = this.map.getBounds();
-    this.MarkerManager.updateMarkers(places, bounds);
+    let bounds = new google.maps.LatLngBounds();
+    this.MarkerManager.updateMarkers(places);
   }
 
   renderSearchBox(mapProps, map){
     this.map = map;
+    console.log(map);
     const {google} = this.props;
     let markers = [];
     console.log(mapProps);
@@ -39,18 +40,9 @@ class MapWrapper extends React.Component{
         return;
       }
 
-      let bounds = this.map.getBounds();
-      this.MarkerManager = new MarkerManager(this.map);
-      this.MarkerManager.updateMarkers(places, bounds);
-
-        // if (place.geometry.viewport) {
-        //    bounds.union(place.geometry.viewport);
-        //  } else {
-        //    bounds.extend(place.geometry.location);
-        //  }
-      // });
-      //
-      // map.fitBounds(bounds);
+      let bounds = new google.maps.LatLngBounds();
+      this.MarkerManager = new MarkerManager(this.map, bounds);
+      this.MarkerManager.updateMarkers(places);
     });
   }
 
