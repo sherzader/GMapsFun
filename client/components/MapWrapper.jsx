@@ -5,15 +5,14 @@ import Map from 'google-maps-react';
 import MarkerManager from '../util/markerManager';
 
 class MapWrapper extends React.Component{
-  getNewPlaces(){
+  getNewPlaces(mapProps, map){
     let places = this.searchBox.getPlaces();
-    console.log(places);
 
-    if (places.length === 0) {
+    if (!places || places.length === 0) {
       return;
     }
 
-    let bounds = new google.maps.LatLngBounds();
+    // let bounds = new google.maps.LatLngBounds();
     this.MarkerManager.updateMarkers(places);
   }
 
@@ -21,20 +20,20 @@ class MapWrapper extends React.Component{
     this.map = map;
     console.log(map);
     const {google} = this.props;
-    let markers = [];
-    console.log(mapProps);
+    // console.log(mapProps);
 
     // if (!google || !map) return;
 
     const input = document.getElementById('place-input');;
     const node = ReactDOM.findDOMNode(input);
     let searchBox = new google.maps.places.SearchBox(input);
-    searchBox.bindTo('bounds', this.map);
     this.searchBox = searchBox;
+    this.searchBox.bindTo('bounds', this.map);
+    // console.log(this.searchBox);
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
 
-    searchBox.addListener('places_changed', () => {
-      let places = searchBox.getPlaces();
+    this.searchBox.addListener('places_changed', () => {
+      let places = this.searchBox.getPlaces();
 
       if (places.length === 0) {
         return;

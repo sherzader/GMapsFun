@@ -1,13 +1,15 @@
 export default class MarkerManager {
   constructor(map, bounds){
     this.map = map;
-    this.markers = [];
     this.bounds = bounds;
+    this.markers = [];
+    // this.bounds = bounds;
     this._createMarker = this._createMarker.bind(this);
     this._removeMarker = this._removeMarker.bind(this);
   }
 
   updateMarkers(locations){
+    // this.bounds = bounds;
     console.log(this.bounds);
     this.locations = locations;
     this._locationsToAdd().forEach(this._createMarker);
