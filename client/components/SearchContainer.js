@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Search from './Search';
-import { addTerritory, removeTerritory, toggleMark } from '../actions/territories_actions';
+import { addTerritory, removeTerritory, toggleMark, addAndMark } from '../actions/territories_actions';
 
 const mapStatetoProps = state => ({
   territories: state.territories
@@ -8,6 +8,7 @@ const mapStatetoProps = state => ({
 
 const mapDispatchtoProps = dispatch => ({
   addTerritory: (name, id) => dispatch(addTerritory(name, id)),
+  addAndMark: (name) => dispatch(addAndMark(name)),
   removeTerritory: index => dispatch(removeTerritory(index)),
   toggleMark: (index, mark) => dispatch(toggleMark(index, mark))
 })

@@ -16,7 +16,11 @@ class TerritoryMap extends React.Component{
     const mapNode = this.refs.map;
 
     this.map = new google.maps.Map(mapNode, _mapOptions);
-    this.markerManager = new MarkerManager(this.map, this._handleClick.bind(this));
+    this.markerManager = new MarkerManager(
+      this.map,
+      this._addTerritory.bind(this),
+      this._addAndMark.bind(this)
+    );
 
 
     let input = document.getElementById('place-input');
@@ -32,8 +36,12 @@ class TerritoryMap extends React.Component{
     });
   }
 
-  _handleClick(place, id){
+  _addTerritory(place, id){
     this.props.addTerritory(place, id);
+  }
+
+  _addAndMark(place){
+    this.props.addAndMark(place);
   }
 
   render(){
