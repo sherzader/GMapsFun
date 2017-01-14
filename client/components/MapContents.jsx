@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 class MapContents extends React.Component{
 
-  componentDidMount(){
+  componentDidMount() {
     console.log(this.props);
       const {map} = this.props;
       this.renderSearchBox();
@@ -19,7 +19,7 @@ class MapContents extends React.Component{
     }
   }
 
-  renderSearchBox(){
+  renderSearchBox() {
     const {google, map} = this.props;
     let markers = [];
     console.log(this.props);
@@ -81,14 +81,18 @@ class MapContents extends React.Component{
     });
   }
 
-  render(){
-    if (!this.props.loaded){
-      return <div>Loading...</div>
-    }
+  render() {
+    const {
+      loaded,
+    } = this.props;
 
     return (
       <div>
-        <input id='place-input' className='controls' type='text' placeholder='Search Box' />
+        {
+          loading
+          ? <div>Loading...</div>
+          : <input id='place-input' className='controls' type='text' placeholder='Search Box' />
+        }
       </div>
     )
   }
