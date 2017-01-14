@@ -8,14 +8,15 @@ export default class MarkerManager {
     this._removeMarker = this._removeMarker.bind(this);
   }
 
-  updateMarkers(locations){
+  updateMarkers(locations, bounds){
+    this.bounds = bounds;
     if (locations) {
       this.locations = locations;
     };
     this._locationsToAdd().forEach(this._createMarker);
     this._markersToRemove().forEach(this._removeMarker);
     console.log(this.markers);
-    // this.map.fitBounds(this.bounds);
+    this.map.fitBounds(this.bounds);
   }
 
   _locationsToAdd(){
@@ -41,11 +42,11 @@ export default class MarkerManager {
 
     this.markers.push(marker);
 
-    // if (place.geometry.viewport) {
-    //    this.bounds.union(place.geometry.viewport);
-    //  } else {
-    //    this.bounds.extend(place.geometry.location);
-    //  }
+    if (place.geometry.viewport) {
+       this.bounds.union(place.geometry.viewport);
+     } else {
+       this.bounds.extend(place.geometry.location);
+     }
   }
 
   _removeMarker(marker){

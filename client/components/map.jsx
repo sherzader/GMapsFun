@@ -16,7 +16,7 @@ class TerritoryMap extends React.Component{
     const mapNode = this.refs.map;
 
     this.map = new google.maps.Map(mapNode, _mapOptions);
-    this.markerManager = new MarkerManager(this.map);
+    this.markerManager = new MarkerManager(this.map, this._handleClick.bind(this));
 
 
     let input = document.getElementById('place-input');
@@ -27,17 +27,21 @@ class TerritoryMap extends React.Component{
     this.searchBox.addListener('places_changed', () => {
       let places = this.searchBox.getPlaces();
 
-      // let bounds = new google.maps.LatLngBounds();
-      this.markerManager.updateMarkers(places);
+      let bounds = new google.maps.LatLngBounds();
+      this.markerManager.updateMarkers(places, bounds);
     });
 
-    this.map.addListener('bounds_changed', () => {
-      // this.searchBox.setBounds(this.map.getBounds());
-      let places = this.searchBox.getPlaces() || [];
-      let withinBounds = places.filter(place => this.map.getBounds().contains(place.geometry.location));
-      this.markerManager.updateMarkers(withinBounds);
-    });
+    // this.map.addListener('bounds_changed', () => {
+    //   // this.searchBox.setBounds(this.map.getBounds());
+    //   let places = this.searchBox.getPlaces() || [];
+    //   let withinBounds = places.filter(place => this.map.getBounds().contains(place.geometry.location));
+    //   this.markerManager.updateMarkers(withinBounds);
+    // });
 
+  }
+
+  _handleClick(place, id){
+    this.props.addTerritory(place, id);
   }
 
   render(){
