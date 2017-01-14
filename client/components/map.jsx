@@ -11,6 +11,8 @@ let _mapOptions = {
 class TerritoryMap extends React.Component{
 
   componentDidMount(){
+    this.addTerritory = this._addTerritory.bind(this);
+    this.addAndMark = this._addAndMark.bind(this);
     // let service;
     let infoWindow;
     const mapNode = this.refs.map;

@@ -36,15 +36,15 @@ export default class MarkerManager {
     });
 
     let contentString = '<h1>' + place.name + '</h1>'+
-      '<p onClick={this.addTerritory(' + place.name + ", " + place.id + ')}>Add to Mark</p>'+
-      '<p onClick={this.addAndMark(' + place.name + ')}>Marked</p>';
+      '<p onClick="this.addTerritory(\'' + place.name + '\')">Add to Mark</p>'+
+      '<p onClick="this.addAndMark(\'' + place.name + '\')">Marked</p>';
 
     let infowindow = new google.maps.InfoWindow({
       content: contentString
     });
 
-    marker.addListener('click', () => this.addTerritory(place.name));
-    // marker.addListener('click', () => infowindow.open(this.map, marker));
+    // marker.addListener('click', () => this.addTerritory(place.name));
+    marker.addListener('click', () => infowindow.open(this.map, marker));
 
     this.markers.push(marker);
 
