@@ -71,7 +71,7 @@ class TerritoryMap extends React.Component{
   }
 
   render(){
-    const mapHeight = {
+    const mapSize = {
       height: '500px',
       width: '500px'
     };

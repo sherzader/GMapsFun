@@ -1,11 +1,11 @@
 import React from 'react';
-import GoogleMapApi from './GoogleMapApi';
+import TerritoryMap from './map';
 import TodoList from './TodoList';
 import DoneList from './DoneList';
 
 const Search = ({territories, addTerritory, removeTerritory, toggleMark}) => (
       <div>
-        <GoogleMapApi addTerritory={addTerritory} />
+        <TerritoryMap addTerritory={addTerritory} />
         <TodoList territories={territories}
           removeTerritory={removeTerritory}
           toggleMark={toggleMark} />
