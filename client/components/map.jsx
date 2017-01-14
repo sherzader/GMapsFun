@@ -1,85 +1,56 @@
 import React from 'react';
+import MarkerManager from '../util/markerManager';
+
+const sf = {lat: 37.7758, lng: -122.435};
+
+let _mapOptions = {
+  center: sf,
+  zoom: 13
+};
 
 class TerritoryMap extends React.Component{
 
   componentDidMount(){
-    let map;
-    let service;
+    // let service;
     let infoWindow;
-    let mapNode = this.refs.map;
-    const sf = {lat: 37.7758, lng: -122.435};
-    const mapOptions = {
-      center: sf,
-      zoom: 13
-    };
+    const mapNode = this.refs.map;
 
-    map = new google.maps.Map(mapNode, mapOptions);
+    this.map = new google.maps.Map(mapNode, _mapOptions);
+    this.markerManager = new MarkerManager(this.map);
+
 
     let input = document.getElementById('place-input');
-    let searchBox = new google.maps.places.SearchBox(input);
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+    this.searchBox = new google.maps.places.SearchBox(input);
+    this.searchBox.bindTo('bounds', this.map);
+    this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
 
-    map.addListener('bounds_changed', () => {
-      searchBox.setBounds(map.getBounds());
+    this.searchBox.addListener('places_changed', () => {
+      let places = this.searchBox.getPlaces();
+
+      // let bounds = new google.maps.LatLngBounds();
+      this.markerManager.updateMarkers(places);
     });
 
-    let markers = [];
-
-    searchBox.addListener('places_changed', () => {
-      let places = searchBox.getPlaces();
-
-      if (places.length === 0) {
-        return;
-      }
-
-      markers.forEach( marker => {
-        marker.setMap(null);
-      });
-      markers = [];
-
-      let bounds = new google.maps.LatLngBounds();
-      places.forEach( place => {
-        if (!place.geometry){
-          console.log('returned place has no geometry');
-          return;
-        }
-
-        let marker = new google.maps.Marker({
-          map: map,
-          title: place.name,
-          icon: "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png",
-          position: place.geometry.location
-        });
-
-        markers.push(marker);
-
-        google.maps.event.addListener(marker, 'click', () => {
-          console.log(place.name);
-          this.props.addTerritory(place.name, place.id);
-        });
-
-        if (place.geometry.viewport) {
-           bounds.union(place.geometry.viewport);
-         } else {
-           bounds.extend(place.geometry.location);
-         }
-      });
-
-      map.fitBounds(bounds);
+    this.map.addListener('bounds_changed', () => {
+      // this.searchBox.setBounds(this.map.getBounds());
+      let places = this.searchBox.getPlaces() || [];
+      let withinBounds = places.filter(place => this.map.getBounds().contains(place.geometry.location));
+      this.markerManager.updateMarkers(withinBounds);
     });
 
   }
 
   render(){
-    const mapSize = {
-      height: '500px',
-      width: '500px'
+    const mapContainerStyle = {
+      width: '100%',
+      height: '100vh',
+      position: 'relative'
     };
 
     return (
       <div>
         <input id='place-input' type='text' placeholder='Search Box' />
-        <div id='map-container' ref='map' style={mapHeight}></div>
+        <div id='map-container' ref='map' style={mapContainerStyle}></div>
       </div>
     )
   }
