@@ -18,7 +18,7 @@ class MapWrapper extends React.Component{
 
   renderSearchBox(mapProps, map){
     this.map = map;
-    console.log(map);
+    // console.log(map);
     const {google} = this.props;
     // console.log(mapProps);
 
@@ -28,6 +28,7 @@ class MapWrapper extends React.Component{
     const node = ReactDOM.findDOMNode(input);
     let searchBox = new google.maps.places.SearchBox(input);
     this.searchBox = searchBox;
+    console.log(this.map.getBounds());
     this.searchBox.bindTo('bounds', this.map);
     // console.log(this.searchBox);
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
@@ -54,7 +55,6 @@ class MapWrapper extends React.Component{
       <Map google={google}
         containerStyle={{width: '100%', height: '100vh', position: 'relative'}}
         onReady={this.renderSearchBox.bind(this)}
-        onDragend={this.getNewPlaces.bind(this)}
         zoom={14}>
         <input id='place-input' className='controls' type='text' placeholder='Search Box' />
 
