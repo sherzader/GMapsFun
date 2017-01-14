@@ -1,9 +1,9 @@
 export default class MarkerManager {
-  constructor(map, handleClick){
+  constructor(map, addTerritory, addAndMark){
     this.map = map;
-    this.handleClick = handleClick;
+    this.addTerritory = addTerritory;
+    this.addAndMark = addAndMark;
     this.markers = [];
-    this.locations = [];
     this._createMarker = this._createMarker.bind(this);
     this._removeMarker = this._removeMarker.bind(this);
   }
@@ -36,15 +36,15 @@ export default class MarkerManager {
     });
 
     let contentString = '<h1>' + place.name + '</h1>'+
-      '<p>Add to Mark</p>'+
-      '<p>Marked</p>';
+      '<p onClick={this.addTerritory(' + place.name + ", " + place.id + ')}>Add to Mark</p>'+
+      '<p onClick={this.addAndMark(' + place.name + ')}>Marked</p>';
 
     let infowindow = new google.maps.InfoWindow({
       content: contentString
     });
 
-    // marker.addListener('click', () => this.handleClick(place.name, place.id));
-    marker.addListener('click', () => infowindow.open(this.map, marker));
+    marker.addListener('click', () => this.addTerritory(place.name));
+    // marker.addListener('click', () => infowindow.open(this.map, marker));
 
     this.markers.push(marker);
 

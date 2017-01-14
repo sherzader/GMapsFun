@@ -1,7 +1,6 @@
-export const addTerritory = (name, id) => ({
+export const addTerritory = (name) => ({
   type: 'ADD_TERRITORY',
-  name,
-  id
+  name
 });
 
 export const removeTerritory = index => ({
