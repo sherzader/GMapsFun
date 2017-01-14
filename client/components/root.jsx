@@ -1,3 +1,4 @@
+//root of app, passes store to children components
 import React from 'react';
 import { Provider } from 'react-redux';
 import App from './app.jsx';

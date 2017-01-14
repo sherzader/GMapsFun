@@ -43,8 +43,8 @@ export default class MarkerManager {
       content: contentString
     });
 
-    // marker.addListener('click', () => this.addTerritory(place.name));
-    marker.addListener('click', () => infowindow.open(this.map, marker));
+    marker.addListener('click', () => this.addTerritory(place.name));
+    // marker.addListener('click', () => infowindow.open(this.map, marker));
 
     this.markers.push(marker);
 

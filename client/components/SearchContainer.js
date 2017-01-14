@@ -1,3 +1,4 @@
+//connects state and props to Search
 import { connect } from 'react-redux';
 import Search from './Search';
 import { addTerritory, removeTerritory, toggleMark, addAndMark } from '../actions/territories_actions';

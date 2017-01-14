@@ -9,7 +9,7 @@ let _mapOptions = {
 };
 
 class TerritoryMap extends React.Component{
-
+//sets up map, markerManager, searchBox
   componentDidMount(){
     this.addTerritory = this._addTerritory.bind(this);
     this.addAndMark = this._addAndMark.bind(this);
@@ -30,6 +30,7 @@ class TerritoryMap extends React.Component{
     this.searchBox.bindTo('bounds', this.map);
     this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
 
+//add listener to searchBox input changed, updates markers
     this.searchBox.addListener('places_changed', () => {
       let places = this.searchBox.getPlaces();
 
@@ -38,10 +39,12 @@ class TerritoryMap extends React.Component{
     });
   }
 
+//add territory to to-do list
   _addTerritory(place, id){
     this.props.addTerritory(place, id);
   }
 
+//add territory and mark to marked list
   _addAndMark(place){
     this.props.addAndMark(place);
   }
