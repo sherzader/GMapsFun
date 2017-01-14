@@ -35,7 +35,16 @@ export default class MarkerManager {
       id: place.id
     });
 
-    marker.addListener('click', () => this.handleClick(place.name, place.id));
+    let contentString = '<h1>' + place.name + '</h1>'+
+      '<p>Add to Mark</p>'+
+      '<p>Marked</p>';
+
+    let infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    // marker.addListener('click', () => this.handleClick(place.name, place.id));
+    marker.addListener('click', () => infowindow.open(this.map, marker));
 
     this.markers.push(marker);
 
