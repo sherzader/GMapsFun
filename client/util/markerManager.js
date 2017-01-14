@@ -1,6 +1,7 @@
 export default class MarkerManager {
-  constructor(map){
+  constructor(map, handleClick){
     this.map = map;
+    this.handleClick = handleClick;
     this.markers = [];
     this.locations = [];
     this._createMarker = this._createMarker.bind(this);
@@ -35,6 +36,9 @@ export default class MarkerManager {
       position: place.geometry.location,
       id: place.id
     });
+
+    marker.addListener('click', () => this.handleClick(place.name, place.id));
+
     this.markers.push(marker);
 
     // if (place.geometry.viewport) {
