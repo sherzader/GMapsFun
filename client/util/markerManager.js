@@ -10,12 +10,9 @@ export default class MarkerManager {
 
   updateMarkers(locations, bounds){
     this.bounds = bounds;
-    if (locations) {
-      this.locations = locations;
-    };
+    this.locations = locations;
     this._locationsToAdd().forEach(this._createMarker);
     this._markersToRemove().forEach(this._removeMarker);
-    console.log(this.markers);
     this.map.fitBounds(this.bounds);
   }
 

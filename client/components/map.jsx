@@ -30,14 +30,6 @@ class TerritoryMap extends React.Component{
       let bounds = new google.maps.LatLngBounds();
       this.markerManager.updateMarkers(places, bounds);
     });
-
-    // this.map.addListener('bounds_changed', () => {
-    //   // this.searchBox.setBounds(this.map.getBounds());
-    //   let places = this.searchBox.getPlaces() || [];
-    //   let withinBounds = places.filter(place => this.map.getBounds().contains(place.geometry.location));
-    //   this.markerManager.updateMarkers(withinBounds);
-    // });
-
   }
 
   _handleClick(place, id){
