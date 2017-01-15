@@ -21,7 +21,8 @@ class TerritoryMap extends React.Component{
     this.markerManager = new MarkerManager(
       this.map,
       this._addTerritory.bind(this),
-      this._addAndMark.bind(this)
+      this._addAndMark.bind(this),
+      this._renderInfoWindow.bind(this)
     );
 
 
@@ -40,8 +41,8 @@ class TerritoryMap extends React.Component{
   }
 
 //add territory to to-do list
-  _addTerritory(place, id){
-    this.props.addTerritory(place, id);
+  _addTerritory(place){
+    this.props.addTerritory(place);
   }
 
 //add territory and mark to marked list

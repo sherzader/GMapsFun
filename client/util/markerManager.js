@@ -1,8 +1,11 @@
+import ReactDOM from 'react-dom';
+
 export default class MarkerManager {
-  constructor(map, addTerritory, addAndMark){
+  constructor(map, addTerritory, addAndMark, renderInfoWindow){
     this.map = map;
     this.addTerritory = addTerritory;
     this.addAndMark = addAndMark;
+    this.renderInfoWindow = renderInfoWindow;
     this.markers = [];
     this._createMarker = this._createMarker.bind(this);
     this._removeMarker = this._removeMarker.bind(this);
@@ -35,9 +38,11 @@ export default class MarkerManager {
       id: place.id
     });
 
-    let contentString = '<h1>' + place.name + '</h1>'+
-      '<p onClick="this.addTerritory(\'' + place.name + '\')">Add to Mark</p>'+
-      '<p onClick="this.addAndMark(\'' + place.name + '\')">Marked</p>';
+    let contentString = document.createElement('div');
+    ReactDOM.render(this.renderInfoWindow(place), contentString);
+    // '<h1>' + place.name + '</h1>'+
+    //   '<p onClick="this.addTerritory(\'' + place.name + '\')">Add to Mark</p>'+
+    //   '<p onClick="this.addAndMark(\'' + place.name + '\')">Marked</p>';
 
     let infowindow = new google.maps.InfoWindow({
       content: contentString

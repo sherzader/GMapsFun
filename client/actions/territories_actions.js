@@ -1,4 +1,4 @@
-export const addTerritory = (name) => ({
+export const addTerritory = name => ({
   type: 'ADD_TERRITORY',
   name
 });
