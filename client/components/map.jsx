@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import MarkerManager from '../util/markerManager';
 
 const sf = {lat: 37.7758, lng: -122.435};
@@ -20,8 +21,6 @@ class TerritoryMap extends React.Component{
     this.map = new google.maps.Map(mapNode, _mapOptions);
     this.markerManager = new MarkerManager(
       this.map,
-      this._addTerritory.bind(this),
-      this._addAndMark.bind(this),
       this._renderInfoWindow.bind(this)
     );
 
@@ -54,8 +53,8 @@ class TerritoryMap extends React.Component{
     return (
       <div>
         <h1>{place.name}</h1>
-        <button onClick={this.addTerritory}>Add to Mark</button>
-        <button onClick={this.addAndMark}>Marked</button>
+        <button onClick={this._addTerritory.bind(this, place)}>Add to Mark</button>
+        <button onClick={this._addAndMark.bind(this, place)}>Marked</button>
       </div>
     )
   }
