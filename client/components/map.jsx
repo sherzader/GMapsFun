@@ -21,6 +21,7 @@ class TerritoryMap extends React.Component{
     this.map = new google.maps.Map(mapNode, _mapOptions);
     this.markerManager = new MarkerManager(
       this.map,
+      this.addTerritory,
       this._renderInfoWindow.bind(this)
     );
 

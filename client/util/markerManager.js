@@ -1,10 +1,9 @@
 import ReactDOM from 'react-dom';
 
 export default class MarkerManager {
-  constructor(map, renderInfoWindow){
+  constructor(map, addTerritory, renderInfoWindow){
     this.map = map;
     this.addTerritory = addTerritory;
-    this.addAndMark = addAndMark;
     this.renderInfoWindow = renderInfoWindow;
     this.markers = [];
     this._createMarker = this._createMarker.bind(this);
