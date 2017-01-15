@@ -49,6 +49,16 @@ class TerritoryMap extends React.Component{
     this.props.addAndMark(place);
   }
 
+  _renderInfoWindow(place){
+    return (
+      <div>
+        <h1>{place.name}</h1>
+        <button onClick={this.addTerritory}>Add to Mark</button>
+        <button onClick={this.addAndMark}>Marked</button>
+      </div>
+    )
+  }
+
   render(){
     const mapContainerStyle = {
       width: '100%',
