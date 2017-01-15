@@ -14,6 +14,7 @@ class TerritoryMap extends React.Component{
   componentDidMount(){
     this.addTerritory = this._addTerritory.bind(this);
     this.addAndMark = this._addAndMark.bind(this);
+    this.renderInfoWindow = this._renderInfoWindow.bind(this);
     // let service;
     let infoWindow;
     const mapNode = this.refs.map;
@@ -22,7 +23,7 @@ class TerritoryMap extends React.Component{
     this.markerManager = new MarkerManager(
       this.map,
       this.addTerritory,
-      this._renderInfoWindow.bind(this)
+      this.renderInfoWindow
     );
 
 
@@ -54,8 +55,8 @@ class TerritoryMap extends React.Component{
     return (
       <div>
         <h1>{place.name}</h1>
-        <button onClick={this._addTerritory.bind(this, place)}>Add to Mark</button>
-        <button onClick={this._addAndMark.bind(this, place)}>Marked</button>
+        <button onClick={e => console.log('test', this.addTerritory(place))}>Add to Mark</button>
+        <button onClick={e => console.log('mark', this._addAndMark)}>Marked</button>
       </div>
     )
   }
@@ -71,6 +72,7 @@ class TerritoryMap extends React.Component{
       <div>
         <input id='place-input' type='text' placeholder='Search Box' />
         <div id='map-container' ref='map' style={mapContainerStyle}></div>
+        <button onClick={e => console.log(e)}>button</button>
       </div>
     )
   }
