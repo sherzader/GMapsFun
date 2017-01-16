@@ -5,7 +5,8 @@ import MarkedList from './MarkedList';
 
 const Search = ({territories, markTerritory, removeTerritory}) => (
       <div>
-        <TerritoryMap markTerritory={markTerritory}
+        <TerritoryMap territories={territories} 
+          markTerritory={markTerritory}
           removeTerritory={removeTerritory}/>
         <MarkedList territories={territories}
           removeTerritory={removeTerritory} />

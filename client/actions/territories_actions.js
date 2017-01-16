@@ -3,7 +3,7 @@ export const removeTerritory = index => ({
   index
 });
 
-export const markTerritory = name => ({
-  type: 'ADD_AND_MARK',
+export const markTerritory = (name, id) => ({
+  type: 'MARK_TERRITORY',
   name
 })

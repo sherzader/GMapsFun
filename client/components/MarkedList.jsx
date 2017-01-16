@@ -8,25 +8,18 @@ class TodoList extends React.Component{
   }
 
   render(){
-    //formatting to an array of arrays: [territory object, index]
-    let testing = ['rainbows', 'puppies', 'kittens'];
-    let marked = [];
-    this.props.territories.forEach((territory, i) => {
-      if (territory.marked){
-        marked.push([territory, i]);
-      }
-    });
+    let marked = this.props.territories;
     return(
       <div>
         <h3>Marked Territories</h3>
           <ul>
-            {marked.map((territory) => {
-                return (<li key={territory[1]}>{territory[0].name}
+            {marked.map((territory, i) => {
+                return (<li key={i}>{territory.name}
 
                           <img className="paw-print-marked"
                             src="https://www.thesage.com/images/PawPrint.png" />
                           <button
-                            onClick={this.removeTerritory.bind(this, territory[1])}>X</button>
+                            onClick={this.removeTerritory.bind(this, i)}>X</button>
                         </li>)
                   })
               }

@@ -38,12 +38,12 @@ class TerritoryMap extends React.Component{
   }
 
 //add territory to to-do list
-  _markorRemoveTerritory(place, e){
+  _markorRemoveTerritory(name, id, e){
     if (e.target.textContent === 'Add to Mark'){
-      this.props.markTerritory(place);
+      this.props.markTerritory(name, id);
       e.target.textContent = 'Undo';
     } else {
-      this.props.removeTerritory(place);
+      this.props.removeTerritory();
       e.target.textContent = 'Add to Mark';
     }
     // console.log(e.target.textContent);
@@ -53,7 +53,7 @@ class TerritoryMap extends React.Component{
     return (
       <div>
         <h1>{place.name}</h1>
-        <button onClick={this._markorRemoveTerritory.bind(this, place.name)}>Add to Mark</button>
+        <button onClick={this._markorRemoveTerritory.bind(this, place.name, place.id)}>Add to Mark</button>
       </div>
     )
   }
