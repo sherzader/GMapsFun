@@ -13,7 +13,8 @@ class TerritoryMap extends React.Component{
 //sets up map, markerManager, searchBox
   componentDidMount(){
     this.renderInfoWindow = this._renderInfoWindow.bind(this);
-    let infoWindow;
+    this.territories = this.props.territories;
+
     const mapNode = this.refs.map;
 
     this.map = new google.maps.Map(mapNode, _mapOptions);
@@ -38,22 +39,22 @@ class TerritoryMap extends React.Component{
   }
 
 //add territory to to-do list
-  _markorRemoveTerritory(name, id, e){
-    if (e.target.textContent === 'Add to Mark'){
-      this.props.markTerritory(name, id);
+  _markorRemoveTerritory(place, e){
+    if (e.target.textContent === 'Mark'){
+      this.props.markTerritory(place);
       e.target.textContent = 'Undo';
     } else {
-      this.props.removeTerritory();
-      e.target.textContent = 'Add to Mark';
+      let idx = this.props.territories.indexOf(place);
+      this.props.removeTerritory(idx);
+      e.target.textContent = 'Mark';
     }
-    // console.log(e.target.textContent);
   }
 
   _renderInfoWindow(place){
     return (
       <div>
         <h1>{place.name}</h1>
-        <button onClick={this._markorRemoveTerritory.bind(this, place.name, place.id)}>Add to Mark</button>
+        <button onClick={this._markorRemoveTerritory.bind(this, place)}>Mark</button>
       </div>
     )
   }

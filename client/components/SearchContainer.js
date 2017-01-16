@@ -8,7 +8,7 @@ const mapStatetoProps = state => ({
 })
 
 const mapDispatchtoProps = dispatch => ({
-  markTerritory: (name, id) => dispatch(markTerritory(name, id)),
+  markTerritory: place => dispatch(markTerritory(place)),
   removeTerritory: index => dispatch(removeTerritory(index))
 })
 
