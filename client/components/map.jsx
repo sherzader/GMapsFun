@@ -11,7 +11,6 @@ let _mapOptions = {
 };
 
 class TerritoryMap extends React.Component{
-//sets up map, markerManager, searchBox
   componentDidMount(){
     this.renderInfoWindow = this._renderInfoWindow.bind(this);
 

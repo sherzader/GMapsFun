@@ -1,4 +1,3 @@
-//list of marked
 import React from 'react';
 
 class MarkedList extends React.Component{
