@@ -18,6 +18,10 @@ export default class MarkerManager {
     this.map.fitBounds(this.bounds);
   }
 
+  getMarkers(){
+    return this.markers;
+  }
+
   _locationsToAdd(){
     const currentMarkers = this.markers.map( marker => marker.id );
     return this.locations.filter( location => !currentMarkers.includes(location.id));
