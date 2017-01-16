@@ -1,15 +1,14 @@
 //container of map and to-do/marked lists
 import React from 'react';
 import TerritoryMap from './map';
-import TodoList from './TodoList';
+import MarkedList from './MarkedList';
 
-const Search = ({territories, markTerritory, removeTerritory, toggleMark}) => (
+const Search = ({territories, markTerritory, removeTerritory}) => (
       <div>
         <TerritoryMap markTerritory={markTerritory}
           removeTerritory={removeTerritory}/>
-        <TodoList territories={territories}
-          removeTerritory={removeTerritory}
-          toggleMark={toggleMark} />
+        <MarkedList territories={territories}
+          removeTerritory={removeTerritory} />
       </div>
 );
 

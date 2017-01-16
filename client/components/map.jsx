@@ -69,7 +69,6 @@ class TerritoryMap extends React.Component{
       <div>
         <input id='place-input' type='text' placeholder='Search Box' />
         <div id='map-container' ref='map' style={mapContainerStyle}></div>
-        <button onClick={e => console.log(e)}>button</button>
       </div>
     )
   }
