@@ -13,13 +13,13 @@ class TerritoryMap extends React.Component{
 //sets up map, markerManager, searchBox
   componentDidMount(){
     this.renderInfoWindow = this._renderInfoWindow.bind(this);
-    this.territories = this.props.territories;
 
     const mapNode = this.refs.map;
 
     this.map = new google.maps.Map(mapNode, _mapOptions);
     this.markerManager = new MarkerManager(
       this.map,
+      this.props.territories,
       this.renderInfoWindow
     );
 
