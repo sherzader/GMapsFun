@@ -49,11 +49,13 @@ class TerritoryMap extends React.Component{
       this.props.markTerritory(place);
       e.target.textContent = 'Undo';
       marker[0].setIcon("http://res.cloudinary.com/littlef00t/image/upload/v1484540058/darkpurplepawprint_fzt9jb.png");
+      this.markerManager.addToMarked(marker[0]);
     } else {
       let idx = this.props.territories.indexOf(place);
       this.props.removeTerritory(idx);
       e.target.textContent = 'Mark';
       marker[0].setIcon("http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png");
+      this.markerManager.removeFromMarked(marker[0]);
     }
   }
 

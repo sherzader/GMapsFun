@@ -6,6 +6,7 @@ export default class MarkerManager {
     this.territories = territories;
     this.renderInfoWindow = renderInfoWindow;
     this.markers = [];
+    this.marked = [];
     this._createMarker = this._createMarker.bind(this);
     this._removeMarker = this._removeMarker.bind(this);
   }
@@ -20,6 +21,15 @@ export default class MarkerManager {
 
   getMarkers(){
     return this.markers;
+  }
+
+  addToMarked(marker){
+    this.marked.push(marker);
+  }
+
+  removeFromMarked(marker){
+    let i = this.marked.indexOf(marker);
+    this.marked.splice(i, 1);
   }
 
   _locationsToAdd(){
@@ -68,8 +78,10 @@ export default class MarkerManager {
   }
 
   _removeMarker(marker){
-    const i = this.markers.indexOf(marker);
-    this.markers[i].setMap(null);
-    this.markers.splice(i, 1);
+    if (!this.marked.includes(marker)){
+      const i = this.markers.indexOf(marker);
+      this.markers[i].setMap(null);
+      this.markers.splice(i, 1);
+    }
   }
 }
