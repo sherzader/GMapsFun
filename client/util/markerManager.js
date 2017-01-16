@@ -42,21 +42,24 @@ export default class MarkerManager {
   }
 
   _createMarker(place){
-    let pawprint = "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png";
-    let marker = new google.maps.Marker({
-      map: this.map,
-      title: place.name,
-      icon: pawprint,
-      position: place.geometry.location,
-      id: place.id
-    });
-
     let contentString = document.createElement('div');
     ReactDOM.render(this.renderInfoWindow(place), contentString);
 
     let infowindow = new google.maps.InfoWindow({
       content: contentString
     });
+
+    let pawprint = "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png";
+
+    let marker = new google.maps.Marker({
+      map: this.map,
+      title: place.name,
+      icon: pawprint,
+      position: place.geometry.location,
+      id: place.id,
+      infowindow
+    });
+
 
     marker.addListener('click', () => {
       infowindow.open(this.map, marker);

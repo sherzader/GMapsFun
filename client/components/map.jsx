@@ -69,6 +69,7 @@ class TerritoryMap extends React.Component{
       marker.position === place.geometry.location
     );
     this.props.removeTerritory(idx);
+    marker[0]['infowindow']['content'].lastChild.lastChild.textContent = 'Mark';
     marker[0].setIcon(
       "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png"
     );
