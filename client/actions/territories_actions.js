@@ -1,8 +1,3 @@
-export const addTerritory = name => ({
-  type: 'ADD_TERRITORY',
-  name
-});
-
 export const removeTerritory = index => ({
   type: 'REMOVE_TERRITORY',
   index
@@ -14,7 +9,7 @@ export const toggleMark = (index, mark) => ({
   mark
 });
 
-export const addAndMark = name => ({
+export const markTerritory = name => ({
   type: 'ADD_AND_MARK',
   name
 })

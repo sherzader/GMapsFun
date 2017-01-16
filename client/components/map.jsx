@@ -38,9 +38,9 @@ class TerritoryMap extends React.Component{
   }
 
 //add territory to to-do list
-  _addorRemoveTerritory(place, e){
+  _markorRemoveTerritory(place, e){
     if (e.target.textContent === 'Add to Mark'){
-      this.props.addTerritory(place);
+      this.props.markTerritory(place);
       e.target.textContent = 'Undo';
     } else {
       this.props.removeTerritory(place);
@@ -53,7 +53,7 @@ class TerritoryMap extends React.Component{
     return (
       <div>
         <h1>{place.name}</h1>
-        <button onClick={this._addorRemoveTerritory.bind(this, place.name)}>Add to Mark</button>
+        <button onClick={this._markorRemoveTerritory.bind(this, place.name)}>Add to Mark</button>
       </div>
     )
   }

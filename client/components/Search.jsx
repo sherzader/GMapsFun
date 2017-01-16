@@ -3,10 +3,9 @@ import React from 'react';
 import TerritoryMap from './map';
 import TodoList from './TodoList';
 
-const Search = ({territories, addTerritory, addAndMark, removeTerritory, toggleMark}) => (
+const Search = ({territories, markTerritory, removeTerritory, toggleMark}) => (
       <div>
-        <TerritoryMap addTerritory={addTerritory}
-          addAndMark={addAndMark}
+        <TerritoryMap markTerritory={markTerritory}
           removeTerritory={removeTerritory}/>
         <TodoList territories={territories}
           removeTerritory={removeTerritory}
