@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MarkerManager from '../util/markerManager';
+import MarkedList from './MarkedList';
 
 const sf = {lat: 37.7758, lng: -122.435};
 
@@ -78,6 +79,7 @@ class TerritoryMap extends React.Component{
       <div>
         <input id='place-input' type='text' placeholder='Search Box' />
         <div id='map-container' ref='map' style={mapContainerStyle}></div>
+        <MarkedList {...this.props}/>
       </div>
     )
   }
