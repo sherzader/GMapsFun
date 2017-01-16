@@ -48,15 +48,31 @@ class TerritoryMap extends React.Component{
     if (e.target.textContent === 'Mark'){
       this.props.markTerritory(place);
       e.target.textContent = 'Undo';
-      marker[0].setIcon("http://res.cloudinary.com/littlef00t/image/upload/v1484540058/darkpurplepawprint_fzt9jb.png");
+      marker[0].setIcon(
+        "http://res.cloudinary.com/littlef00t/image/upload/v1484540058/darkpurplepawprint_fzt9jb.png"
+      );
       this.markerManager.addToMarked(marker[0]);
     } else {
       let idx = this.props.territories.indexOf(place);
       this.props.removeTerritory(idx);
       e.target.textContent = 'Mark';
-      marker[0].setIcon("http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png");
+      marker[0].setIcon(
+        "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png"
+      );
       this.markerManager.removeFromMarked(marker[0]);
     }
+  }
+
+  _removeTerritoryFromList(idx, place){
+    let markers = this.markerManager.getMarkers();
+    let marker = markers.filter(marker =>
+      marker.position === place.geometry.location
+    );
+    this.props.removeTerritory(idx);
+    marker[0].setIcon(
+      "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png"
+    );
+    this.markerManager.removeFromMarked(marker[0]);
   }
 
   _renderInfoWindow(place){
@@ -79,7 +95,7 @@ class TerritoryMap extends React.Component{
       <div>
         <input id='place-input' type='text' placeholder='Search Box' />
         <div id='map-container' ref='map' style={mapContainerStyle}></div>
-        <MarkedList {...this.props}/>
+        <MarkedList {...this.props} removeTerritory={this._removeTerritoryFromList.bind(this)}/>
       </div>
     )
   }
