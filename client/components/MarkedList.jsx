@@ -1,7 +1,7 @@
 //list of marked
 import React from 'react';
 
-class TodoList extends React.Component{
+class MarkedList extends React.Component{
 
   removeTerritory(index){
     this.props.removeTerritory(index);
@@ -29,4 +29,4 @@ class TodoList extends React.Component{
   }
 };
 
-export default TodoList;
+export default MarkedList;

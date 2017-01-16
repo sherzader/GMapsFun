@@ -1,9 +1,8 @@
 import ReactDOM from 'react-dom';
 
 export default class MarkerManager {
-  constructor(map, territories, renderInfoWindow){
+  constructor(map, renderInfoWindow){
     this.map = map;
-    this.territories = territories;
     this.renderInfoWindow = renderInfoWindow;
     this.markers = [];
     this.marked = [];
@@ -43,12 +42,7 @@ export default class MarkerManager {
   }
 
   _createMarker(place){
-    let pawprint;
-    if (this.territories.includes(place)){
-      pawprint = "http://res.cloudinary.com/littlef00t/image/upload/v1484540058/darkpurplepawprint_fzt9jb.png";
-    } else {
-      pawprint = "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png";
-    }
+    let pawprint = "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png";
     let marker = new google.maps.Marker({
       map: this.map,
       title: place.name,
