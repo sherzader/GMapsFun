@@ -38,13 +38,24 @@ class TerritoryMap extends React.Component{
   }
 
 //add territory to to-do list
-  _addTerritory(place){
+  _addTerritory(place, e){
     this.props.addTerritory(place);
+    if (e.target.textContent === 'Add to Mark'){
+      e.target.textContent = 'Undo';
+    } else {
+      e.target.textContent = 'Add to Mark';
+    }
+    // console.log(e.target.textContent);
   }
 
 //add territory and mark to marked list
   _addAndMark(place){
     this.props.addAndMark(place);
+    if (e.target.textContent === 'Marked'){
+      e.target.textContent = 'Undo';
+    } else {
+      e.target.textContent = 'Marked';
+    }
   }
 
   _renderInfoWindow(place){
