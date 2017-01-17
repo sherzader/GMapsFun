@@ -19,6 +19,18 @@ li {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     height: 32px;
+    width: 170px;
     outline: none;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.marked-list {
+  position: relative;
+  border: 1px solid black;
+  width: 20vw;
+  height: 80vh;
+  top: 10vh;
+  left: 75vw;
+  margin-left: 3px;
+  background-color: white;
 }

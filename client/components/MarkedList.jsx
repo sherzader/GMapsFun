@@ -9,12 +9,11 @@ class MarkedList extends React.Component{
   render(){
     let marked = this.props.territories;
     return(
-      <div>
-        <h3>Marked Territories</h3>
+      <div className='marked-list'>
+        <h3 className='center'>Marked Territories</h3>
           <ul>
             {marked.map((territory, i) => {
                 return (<li key={i}>{territory.name}
-
                           <img className="paw-print-marked"
                             src="https://www.thesage.com/images/PawPrint.png" />
                           <button
