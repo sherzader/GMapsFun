@@ -14,8 +14,6 @@ class MarkedList extends React.Component{
           <ul>
             {marked.map((territory, i) => {
                 return (<li key={i}>{territory.name}
-                          <img className="paw-print-marked"
-                            src="https://www.thesage.com/images/PawPrint.png" />
                           <button
                             onClick={this.removeTerritory.bind(this, i, territory)}>X</button>
                         </li>)
