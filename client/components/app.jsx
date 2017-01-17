@@ -3,8 +3,8 @@ import SearchContainer from './SearchContainer';
 
 const App = () => (
   <div>
-    <h1>Marked</h1>
-    <p>For dogs to keep track of their territory</p>
+    <h1 className='center'>Marked</h1>
+    <p className='center'>For dogs to keep track of their territory</p>
     <SearchContainer />
   </div>
 );

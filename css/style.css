@@ -1,8 +1,5 @@
-.paw-print-unmarked {
-  opacity: 0.3;
-  height: 30px;
-  width: auto;
-  padding: 10px;
+.center {
+  text-align: center;
 }
 
 .paw-print-marked {
