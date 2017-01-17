@@ -26,7 +26,7 @@ class TerritoryMap extends React.Component{
     let input = document.getElementById('place-input');
     this.searchBox = new google.maps.places.SearchBox(input);
     this.searchBox.bindTo('bounds', this.map);
-    this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+    this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
 //add listener to searchBox input changed, updates markers
     this.searchBox.addListener('places_changed', () => {
@@ -93,7 +93,7 @@ class TerritoryMap extends React.Component{
 
     return (
       <div>
-        <input id='place-input' type='text' placeholder='Search Box' />
+        <input id='place-input' className='controls' type='text' placeholder='Search for Territories' />
         <div id='map-container' ref='map' style={mapContainerStyle}></div>
         <MarkedList {...this.props} removeTerritory={this._removeTerritoryFromList.bind(this)}/>
       </div>
