@@ -1,21 +1,23 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 class MarkedList extends React.Component{
-
-  removeTerritory(i, territory){
-    this.props.removeTerritory(i, territory);
-  }
-
   render(){
-    let marked = this.props.territories;
+    const {
+      unmarkTerritory,
+      territories,
+    } = this.props;
+
     return(
       <div className='marked-list'>
         <h3 className='center'>Marked Territories</h3>
           <ul className='scroll'>
-            {marked.map((territory, i) => {
-                return (<li key={i}>{territory.name}
+            {territories.map((territory, i) => {
+                return (<li key={i}>
+                          {territory.name}
                           <button
-                            onClick={this.removeTerritory.bind(this, i, territory)}>X</button>
+                            onClick={unmarkTerritory.bind(this, territory)}>
+                            X
+                          </button>
                         </li>)
                   })
               }
@@ -24,5 +26,10 @@ class MarkedList extends React.Component{
     );
   }
 };
+
+MarkedList.propTypes = {
+  unmarkTerritory: PropTypes.func.isRequired,
+  territories: PropTypes.array.isRequired,
+}
 
 export default MarkedList;

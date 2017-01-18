@@ -1,10 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import App from './app.jsx';
+import Marked from './Marked.jsx';
 
 const Root = ({store}) => (
   <Provider store={store}>
-    <App />
+    <Marked />
   </Provider>
 )
 

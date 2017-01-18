@@ -1,6 +1,6 @@
-export const removeTerritory = index => ({
-  type: 'REMOVE_TERRITORY',
-  index
+export const unmarkTerritory = place => ({
+  type: 'UNMARK_TERRITORY',
+  place
 });
 
 export const markTerritory = place => ({
