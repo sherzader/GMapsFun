@@ -77,24 +77,18 @@ class TerritoryMap extends React.Component{
 
   _renderInfoWindow(place){
     return (
-      <div>
-        <h1>{place.name}</h1>
+      <div class='info-window'>
+        <h3>{place.name}</h3>
         <button onClick={this._markorRemoveTerritory.bind(this, place)}>Mark</button>
       </div>
     )
   }
 
   render(){
-    const mapContainerStyle = {
-      width: '100%',
-      height: '100vh',
-      position: 'absolute'
-    };
-
     return (
-      <div>
+      <div className='outer-container'>
         <input id='place-input' className='controls' type='text' placeholder='Search for Territories' />
-        <div id='map-container' ref='map' style={mapContainerStyle}></div>
+        <div id='map-container' ref='map'></div>
         <MarkedList {...this.props} removeTerritory={this._removeTerritoryFromList.bind(this)}/>
       </div>
     )
