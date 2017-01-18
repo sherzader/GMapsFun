@@ -11,7 +11,7 @@ class MarkedList extends React.Component{
     return(
       <div className='marked-list'>
         <h3 className='center'>Marked Territories</h3>
-          <ul>
+          <ul className='scroll'>
             {marked.map((territory, i) => {
                 return (<li key={i}>{territory.name}
                           <button

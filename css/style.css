@@ -54,6 +54,13 @@
   padding: 10px;
 }
 
+.scroll {
+  height: 60vh;
+  overflow: auto;
+  right: 20px;
+  position: relative;
+}
+
 li {
   padding: 5px;
   list-style-type: none;
