@@ -28,6 +28,10 @@
   right: 30px;
 }
 
+.info-window {
+  z-index: 97;
+}
+
 .marked-list {
   position: relative;
   border: 1px solid black;
@@ -53,4 +57,8 @@
 li {
   padding: 5px;
   list-style-type: none;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
 }

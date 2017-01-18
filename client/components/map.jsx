@@ -77,7 +77,7 @@ class TerritoryMap extends React.Component{
 
   _renderInfoWindow(place){
     return (
-      <div class='info-window'>
+      <div className='info-window'>
         <h3>{place.name}</h3>
         <button onClick={this._markorRemoveTerritory.bind(this, place)}>Mark</button>
       </div>
