@@ -46,7 +46,7 @@ export default class MarkerManager {
     ReactDOM.render(this.renderInfoWindow(place), contentString);
 
     let infowindow = new google.maps.InfoWindow({
-      content: contentString
+      content: contentString,
     });
 
     let pawprint = "http://res.cloudinary.com/littlef00t/image/upload/v1481759433/ojvig5yzrbwt1fzej4wc.png";
@@ -62,7 +62,13 @@ export default class MarkerManager {
 
 
     marker.addListener('click', () => {
-      infowindow.open(this.map, marker);
+      if (!infowindow.opened) {
+        infowindow.open(this.map, marker);
+        infowindow.opened = true;
+      } else {
+        infowindow.close();
+        infowindow.opened = false;
+      }
     });
 
     this.markers.push(marker);
